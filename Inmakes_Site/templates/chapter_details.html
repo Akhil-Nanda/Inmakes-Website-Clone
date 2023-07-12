@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="w3-bar w3-black mb-3 mt-3" style="background-color:#43D477;height:50px;border-radius:10px;display:flex;justify-content:space-between;">
+                <div style="color:white;margin-top:15px;margin-left:20px;">
+                    <label><b>Classes</b></label>
+                </div>
+            </div>
+            <h6>Module Contents</h6><hr>
+            <P style="margin-left:50px;">Title</P>
+            <br>
+            {% for i in contents %}
+            <ol>
+                <li>
+                    <div class="card">
+                        <div style="margin-left:20px;display:flex;justify-content:space-between;margin-top:10px;margin-bottom:10px;">
+                            <div>
+                               {{i.content_name}}
+                            </div>
+                             <div style="margin-right:20px;">
+                                <a href="{{i.contents.url}}"><button class="btn btn-success" style="width:150px;">Play</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

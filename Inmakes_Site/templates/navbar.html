@@ -1,0 +1,16 @@
+{% load static %}
+<nav  class="navbar navbar-extends-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href=""><img src="{% static 'image/inmakelogo.png' %}"></a>
+        <button class="btn btn-transparent"><a class="navbar-brand" href="{% url 'home:home' %}">Home</a></button>
+        <button class="btn btn-transparent"><a class="navbar-brand" href="{% url 'home:internship' %}">Internship</a></button>
+        <button class="btn btn-transparent"><a class="navbar-brand" href="{% url 'home:about' %}">About</a></button>
+        <button class="btn btn-transparent"><a class="navbar-brand" href="{% url 'home:contact' %}">Contact</a></button>
+        {% if user.is_authenticated %}
+        <button class="btn btn-success"><a class="navbar-brand" href="{% url 'registration:logout' %}" style="color:white;">Logout</a></button>
+        {% else %}
+        <button class="btn btn-success"><a class="navbar-brand" href="{% url 'registration:register' %}" style="color:white;">Register</a></button>
+        <button class="btn btn-success"><a class="navbar-brand" href="{% url 'registration:login' %}" style="color:white;">Login</a></button>
+        {% endif %}
+    </div>
+</nav>

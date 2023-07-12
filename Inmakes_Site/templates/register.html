@@ -1,0 +1,404 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+@keyframes color-change {
+  0% {
+    background-color:#43D477;
+  }
+  50% {
+    background-color: green;
+  }
+  100% {
+    background-color:#43D477;
+  }
+}
+
+.regbutton {
+  animation: color-change 5s linear infinite;
+}
+</style>
+</head>
+<body>
+<!--navbar-->
+<nav  class="navbar navbar-extends-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href=""><img src="{% static 'image/inmakelogo.png' %}"></a>
+    </div>
+</nav>
+<!--banner 1-->
+<div class="fluid-container">
+    <div class="row">
+        <div class="col-6"style="padding-left:150px;padding-top:150px;">
+            <h2 style="font-size:50px;">India's <span style="background:linear-gradient(90deg, cyan, white);">#1 free</span> virtual <br>intership platform.</h2>
+            <p style="font-size:20px;"><b>Learn in Native Language (മലയാളം / தமிழ்)</b></p><br>
+             <a href="{% url 'registration:register' %}" style="color:white;text-decoration:none;"><button class="btn regbutton" style="height:50px;width:250px;border-radius:10px;color:white;"><b>REGISTER BELOW</b></button></a>
+            <p class="text-secondary" style="padding-top:50px;"><b>Recogonized By <img src="{% static 'image/icons/india-gov-logo.svg' %}"  width="20px;"><span style="font-size:20px;"> Government of India</span> and many more...</b></p>
+            <div style="padding-top:20px;">
+<!--marquee for continuoes sliding option-->
+            <marquee behavior="scroll" direction="left">
+                <img src="{% static 'image/icons/Google.webp' %}" alt="" height="50px;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/Amazon.webp' %}" alt="" height="30px;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/digitalocean.webp' %}" alt="" height="50px;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/hostinger.webp' %}" alt="" height="50px;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/hubspot.webp' %}" alt="" height="50px;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/iso-image.png' %}" alt="" height=30;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/microsoft.webp' %}" alt="" height="30px;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/razorpay.webp' %}" alt="" height="30px;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/start-up.webp' %}" alt="" height="50px;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/startup-mission_1.webp' %}" alt="" height="50px;" style="margin-right:20px;">
+                <img src="{% static 'image/icons/Technical_Education.webp' %}" alt="" height="50px;" style="margin-right:20px;">
+            </marquee>
+            </div>
+        </div>
+        <div class="col-6" style="padding-top:30px;text-align:right;">
+            <img src="{% static 'image/login/banner-hero.webp' %}" alt="">
+        </div>
+    </div>
+</div>
+<!--banner 2-->
+<div class="fluid-container">
+    <div class="row">
+        <div id="Placed Students" class="banner_image">
+            <img src="{% static 'image/login/Group20131.webp' %}" alt="" width="100%;">
+        </div>
+        <div id="Hiring Partners" class="banner_image">
+            <img src="{% static 'image/login/Mask group.webp' %}" alt="" width="100%;">
+        </div>
+        <div id="Employees" class="banner_image">
+            <img src="{% static 'image/login/Group image PC.webp' %}" alt="" width="100%;">
+        </div>
+        <div class="col-12" style="text-align:center;">
+            <button class="banner_btn" style="border-radius:0 0 0 20px;width:200px;background-color:#43D477;border-color:#43D477;color:white;" onclick="banner('Placed Students')">1500+ <br>Placed Students</button>
+            <button class="banner_btn" style="width:200px;background-color:#43D477;border-color:#43D477;color:white;" onclick="banner('Hiring Partners')">5000+ <br>Hiring Partners</button>
+            <button class="banner_btn" style="border-radius:0 0 20px 0;width:200px;background-color:#43D477;border-color:#43D477;color:white;" onclick="banner('Employees')">500+ <br>Employees</button>
+        </div>
+    </div>
+</div>
+
+<!--registration form-->
+
+<div class="fluid-container" style="background-image:url('/static/image/login/vector-line.png');margin-top:150px;">
+    <div class="row">
+        <div class="col-4">
+            <img src="{% static 'image/login/Group 46.webp' %}" alt="" width="300px;" style="margin-left:100px;">
+        </div>
+        <div class="col-8">
+            <div class="card" style="border-radius:20px;">
+                <form method="POST" style="margin-bottom:50px;margin-top:50px;margin-right:50px;margin-left:50px;">
+                    {% csrf_token %}
+                    <h3>Register for <span style="color:#43D477">free internship</span></h3><br>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="fullname" >Full Name</label><br>
+                            <input id="fullname" name="full_name" type="text" style="width:100%;margin-bottom:20px;border-radius:10px;" placeholder="enter your full name" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="email" >Email</label><br>
+                            <input id="email" name="email" type="email" style="width:100%;margin-bottom:20px;border-radius:10px;" placeholder="enter email" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="phone" >Phone</label><br>
+                            <input id="phone" name="phone_number" type="tel" style="width:100%;margin-bottom:20px;border-radius:10px;" placeholder="enter phone number" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="place" >Place</label><br>
+                            <input id="place" name="place" type="text" style="width:100%;margin-bottom:20px;border-radius:10px;" placeholder="enter your place/city"  required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="qualification" >Qualification</label><br>
+                            <select id="qualification" name="qualification" style="width:100%;margin-bottom:20px;border-radius:10px;"  required>
+                                <option value="highersecondary">Higher Secondary</option>
+                                <option value="polytechnic">Polytechnic</option>
+                                <option value="undergraduate ">Under Graduate</option>
+                                <option value="postgraduate">Post Graduate</option></select>
+                        </div>
+                        <div class="col-6">
+                            <label for="program" >Select Program</label><br>
+                            <select id="program" name="program" style="width:100%;margin-bottom:20px;border-radius:10px;"  required>
+                                <option value="">Select Program</option>
+                            {% for i in program %}
+                            <option value="{{i.id}}">{{i.name}}</option>
+                            {% endfor %}
+                                </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn regbutton" style="height:50px;width:100px;border-radius:10px;color:white;margin-top:20px;"><b>REGISTER</b></button>
+                </form>
+                <div style="text-align:center;font-size:30px;">
+                   {% for i in messages %}
+                        {{i}}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--section-->
+
+<div class="fluid-container" style="background-image:url('/static/image/login/vector-line.png');margin-top:100px;">
+    <div class="row" style="padding-top:50px;">
+        <div class="col-6" style="padding-left:150px;">
+            <h1><span class="skillUp">What Makes</span> Us Stand Out from the Rest?</h1>
+            <a href="{% url 'home:contact' %}" style="color:white;text-decoration:none;"><button class="btn regbutton" style="height:50px;width:300px;border-radius:10px;color:white;margin-top:20px;"><b>CONTACT US FOR FREE COUNCIL</b></button></a>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-6 mt-3 mb-3">
+                    <div class="card h-100 " style="align-items:center;border-radius:10px;border-color:black;">
+                        <img src="{% static 'image/login/Frame (1).svg' %}" width="150px;" alt="">
+                        <h4>100% Placement</h4>
+                        <p>Focused Training</p>
+                    </div>
+                </div>
+                <div class="col-6 mt-3 mb-3">
+                    <div class="card h-100" style="align-items:center;border-radius:10px;border-color:black;">
+                        <img src="{% static 'image/login/Frame (2).svg' %}" width="150px;" alt="">
+                        <h4>Learn in </h4>
+                        <p>Malayalam</p>
+                    </div>
+                </div>
+                <div class="col-6  mt-3 mb-3">
+                    <div class="card h-100" style="align-items:center;border-radius:10px;border-color:black;">
+                        <img src="{% static 'image/login/Frame.svg' %}" width="150px;" alt="">
+                        <h4>Task based</h4>
+                        <p>Learning Programe</p>
+                    </div>
+                </div>
+                <div class="col-6 ">
+                    <div class="card h-100" style="align-items:center;border-radius:10px;border-color:black;">
+                        <img src="{% static 'image/login/Frame (3).svg' %}" width="150px;" alt="">
+                        <h4>Task based</h4>
+                        <p>Learning Programe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--section-->
+
+<div class="fluid-container" style="background-image:url('/static/image/login/vector-line.png');margin-top:100px;">
+    <div class="row" style="padding-top:50px;">
+        <div class="col-6" style="padding-left:150px;">
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <h2>India's top HR & Placement Team <br>with <br><span style="color:#43D477;">30+ members</span></h2><br>
+                <p style="font-size:15px;"><b>Our best-in-class placement crew with a dedicated HR team consisting of 30+ India's top HR executives will provide interns with every guidance they need to land their dream job.</b></p>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <div class="row mt-3 mb-3">
+                            <div class="col-4">
+                                <img src="{% static 'image/login/Group 143.png' %}" width="50px;" alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="counter-value count plus">0</h5>
+                                <p> Happy Interns</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row mt-3 mb-3">
+                            <div class="col-4">
+                                <img src="{% static 'image/login/Group145.png' %}" width="50px;" alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="counter-value count plus">0</h5>
+                                <p> Work Force</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row mt-3 mb-3">
+                            <div class="col-4">
+                                <img src="{% static 'image/login/Group 144.png' %}" width="50px;" alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="counter-value count plus">0</h5>
+                                <p> Hiring Partners</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row mt-3 mb-3">
+                            <div class="col-4">
+                                <img src="{% static 'image/login/Group 189.svg' %}" width="50px;" alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="counter-value count plus">0</h5>
+                                <p> International Certifications</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Awards -->
+
+<div class="fluid-container" style="background-image:url('/static/image/login/vector-line.png');margin-top:100px;margin-left:150px;margin-bottom:100px;">
+    <div class="row" style="padding-top:50px;">
+        <div class="col-4">
+            <div class="card" style="background-color:maroon;border-radius:20px;">
+                <img src="{% static 'image/login/award-image.webp' %}" alt="" width="200px;">
+                <div class="card-body">
+                    <h3 style="color:white;">Kerala State Edu <br>Excellence Award<br><span style="color:#3cb659">Winner 2022</span></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-8" style="text-align:left;">
+            <h3 style="font-size:40px;">Join as a Fresher Trainee...</h3>
+            <h3 style="font-size:40px;">Become an <span style="color:#3cb659">Expert Professional</span></h3>
+            <div class="row mb-3 mt-3">
+                <div class="col-6">
+                    <div class="card" style="width:80%;height:40px;border-radius:10px;border-color:#3cb659;align-items:center;">Python Full Stack Development</div>
+                </div>
+                <div class="col-6">
+                    <div class="card" style="width:80%;height:40px;border-radius:10px;border-color:#3cb659;align-items:center;">Java Full Stack Development</div>
+                </div>
+            </div>
+            <div class="row mb-3 mt-3">
+                <div class="col-6">
+                    <div class="card" style="width:80%;height:40px;border-radius:10px;border-color:#3cb659;align-items:center;">Mobile App Development</div>
+                </div>
+                <div class="col-6">
+                    <div class="card" style="width:80%;height:40px;border-radius:10px;border-color:#3cb659;align-items:center;">Digital Marketing</div>
+                </div>
+            </div>
+            <div class="row mb-3 mt-3">
+                <div class="col-6">
+                    <div class="card" style="width:80%;height:40px;border-radius:10px;border-color:#3cb659;align-items:center;">Multimedia</div>
+                </div>
+                <div class="col-6">
+                   <div class="card" style="width:80%;height:40px;border-radius:10px;border-color:#3cb659;align-items:center;">Prefessional Accounting</div>
+                </div>
+                <a class="navbar-brand" href="{% url 'home:contact' %}" ><button class="btn regbutton mt-3 mb-3" style="color:white;">CONTACT US FOR FREE COUNCIL</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+
+{% load static %}
+<footer>
+   <div class="fluid-container footer-container">
+       <div class="container">
+           <div class="row">
+              <div class="col-3">
+                <img src="{% static 'image/logo1.png' %}" width="250px;">
+                  <p class="footer_text">Learn new skills with top educators. Inmakes Learning hub is the right place for you to learn new skills that will fetch you better opportunities in your career.</p>
+              </div>
+               <div class="col-3">
+                    <p class="footer_text">Additional Links</p>
+                   <ul class="footer_text">
+                       <li><a href="" style="text-decoration:none;color:white;" class="footer_links">Login</a></li>
+                       <li><a href="" style="text-decoration:none;color:white;" class="footer_links">Register</a></li>
+                       <li><a href="{% url 'home:about' %}" style="text-decoration:none;color:white;" class="footer_links">About</a></li>
+                       <li><a href="{% url 'home:contact' %}" style="text-decoration:none;color:white;" class="footer_links">Contact Us</a></li>
+                   </ul>
+               </div>
+               <div class="col-2">
+                    <p class="footer_text">Support</p>
+                   <a href="tel: +91 4842998191" style="text-decoration:none"><p style="color:white;"><i class="fa-solid fa-phone"></i>+91 4842998191</p></a>
+                   <a href="mailto:mail@inmakeslh.com" style="text-decoration:none"><p style="color:white;"><i class="fa-solid fa-envelope"></i>mail@inmakeslh.com</p></a>
+               </div>
+               <div class="col-4">
+                    <p class="footer_text">Recognized/Certified by</p>
+                   <img src="{% static 'image/Group201353.png' %}" width="75px;">
+                   <img src="{% static 'image/Group201354.png' %}" width="75px;">
+                   <img src="{% static 'image/Group 1355.png' %}" width="150px;">
+                        <a href=""><i class="fa-solid fa-instagram"></i></a>
+                        <a href=""><i class="fa-solid fa-whatsapp"></i></a>
+                       <a href=""><i class="fa-solid fa-youtube"></i></a>
+                       <a href=""><i class="fa-solid fa-linkedin"></i></a>
+                       <a href=""><i class="fa-solid fa-facebook"></i></a>
+               </div>
+           </div>
+           <hr style="color:green;height:3px;">
+       <P style="text-align:center;color:white;">&copy; Inmakes Learning Hub ; This is a dummy site made for practice.</P>
+       </div>
+    </div>
+</footer>
+
+
+<script>
+  window.addEventListener("DOMContentLoaded", function() {
+  var images = document.getElementsByClassName("banner_image");
+
+  for (var i = 1; i < images.length; i++) {
+    images[i].style.display = "none";
+  }
+});
+
+function banner(banner) {
+  var images = document.getElementsByClassName("banner_image");
+
+  for (var i = 0; i < images.length; i++) {
+    images[i].style.display = "none";
+  }
+
+  document.getElementById(banner).style.display = "block";
+}
+
+</script>
+<script>
+var buttons = document.getElementsByClassName("banner_btn");
+
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("keydown", function(event) {
+    event.target.classList.add("key-pressed");
+  });
+
+  buttons[i].addEventListener("keyup", function(event) {
+    event.target.classList.remove("key-pressed");
+  });
+}
+
+</script>
+<script>
+function updateCounters(targetCounts) {
+  var counters = document.getElementsByClassName("counter-value");
+  var counts = Array.from(counters).map(() => 0);
+  var increment = 50;
+
+  function update(index) {
+    counters[index].textContent = counts[index];
+    counts[index] += increment;
+
+    if (counts[index] <= targetCounts[index]) {
+      setTimeout(function() {
+        update(index);
+      }, 10); // Adjust the delay between increments if needed
+    }
+  }
+
+  for (var i = 0; i < counters.length; i++) {
+    update(i);
+  }
+}
+
+updateCounters([15000, 5000, 50, 500]);
+
+</script>
+
+</body>
+</html>
+

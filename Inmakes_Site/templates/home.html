@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+  <div class="row hero">
+    <div class="col-12 col-md-6 colhero">
+      <div>
+        <h2 class="skillUp" style="font-size:50px;padding-top:100px;">SkillUp Now</h2>
+        <p class="skillUp" style="font-size:25px;padding-top:20px;"><strong>India's No.1 Virtual Internship Platform</strong></p>
+        <p style="font-size:25px;padding-top:10px;">Learn today <br> for a better tomorrow</p><br>
+        <a href="tel: +91 4842998191"><button class="btn btn-success trainerbtn">Connect With Trainer</button></a>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 colheroimage">
+      <img src="{% static 'image/right-top.png' %}" class="img-fluid" alt="Right Top Image">
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row" style="padding-top:30px;">
+    <div class="col-12 choose">
+      <h3 style="font-family:Montserrat,sans-serif;font-size:25px;font-weight:700;"><u style="text-decoration-color:green;">WHY</u> CHOOSE US</h3>
+    </div>
+    <div class="col-6 col-md-3" style="padding-top:30px;">
+      <div class="shadow card mb-3">
+        <img src="{% static 'image/One-to-one.png' %}" width="80px;" class="mx-auto d-block" style="padding-top:20px">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align:center">Professional Training</h5>
+          <p class="card-text" style="text-align:center">One-to-one mentorship from Experts</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3" style="padding-top:30px;">
+      <div class="shadow card mb-3">
+        <img src="{% static 'image/Challenge.png' %}" width="80px;" class="mx-auto d-block" style="padding-top:20px">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align:center">Gain work-experience</h5>
+          <p class="card-text" style="text-align:center">Challenge and Task-based learning</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3" style="padding-top:30px;">
+      <div class="shadow card mb-3">
+        <img src="{% static 'image/Placement.png' %}" width="80px;" class="mx-auto d-block" style="padding-top:20px">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align:center">Great Career</h5>
+          <p class="card-text" style="text-align:center">100% Life-long Placement Assistance</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3" style="padding-top:30px;">
+      <div class="shadow card mb-3">
+        <img src="{% static 'image/Time.png' %}" width="80px;" class="mx-auto d-block" style="padding-top:20px">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align:center">Quality Classes</h5>
+          <p class="card-text" style="text-align:center">Live Online sessions & flexible timing</p>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+<div class="container slider_container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="{% static 'image/Challenges.jpg' %}"></div>
+          <div class="swiper-slide"><img src="{% static 'image/HR.jpg' %}"></div>
+          <div class="swiper-slide"><img src="{% static 'image/Language.jpg' %}"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="{% static 'image/One20to20One.jpg' %}"></div>
+          <div class="swiper-slide"><img src="{% static 'image/Swapping.jpg' %}"></div>
+          <div class="swiper-slide"><img src="{% static 'image/Timing.jpg' %}"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--User subscribed Program portion-->
+{% if user.is_authenticated %}
+<div class="container">
+  <div class="row" style="padding-top:30px;">
+    <div class="col-12 choose">
+      <h3 style="font-family:Montserrat,sans-serif;font-size:25px;font-weight:700;"><u style="text-decoration-color:green;">Subscribed</u>&nbsp Subjects</h3>
+    </div>
+    <p class="choose" style="font-family:Montserrat,sans-serif;font-size:20px;font-weight:500;">browse subscribed subjects and materials here</p>
+      <div class="row" style="display:flex;justify-content:left;">
+        {% for i in purchased_programs %}
+            <div class="col-lg-2 col-md-3 col-sm-4 mb-3" style="padding-top:20px;">
+                <div class="shadow cards h-100" style="border-radius:15px;">
+                <a href="{% url 'pdetails:level_sub' i.program.id %}"><img class="card-img-top" src="{{ i.program.image.url }}" width="50px;" style="background-color:black;"></a>
+                    <div class="card-body">
+                        <div class="card-title text-center">{{i.program.name}}</div>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+      </div>
+              {% for i in messages %}
+            {{i}}
+          {% endfor %}
+  </div>
+</div>
+{% endif %}
+<!--All Program portion-->
+
+<div class="container">
+  <div class="row" style="padding-top:30px;">
+    <div class="col-12 choose">
+      <h3 style="font-family:Montserrat,sans-serif;font-size:25px;font-weight:700;"><u style="text-decoration-color:green;">Trending</u>Programs</h3>
+    </div>
+    <p class="choose" style="font-family:Montserrat,sans-serif;font-size:20px;font-weight:500;">Choose your Internship Programs</p>
+      <div class="row" style="display:flex;justify-content:left;">
+         {% for i in program %}
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 mb-3" style="padding-top:20px;">
+            <div class="shadow cards h-100" style="border-radius:15px;">
+                <a href="{% url 'pdetails:level' i.id %}"><img class="card-img-top" src="{{ i.image.url }}" width="50px;" style="background-color:black;"></a>
+                <div class="card-body">
+                    <div class="card-title text-center">{{i.name}}</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+</div>
+
+ <!-- feedback -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="choose" style="padding-top:60px;"><u style="text-decoration-color:green;">Testimonials</u></h3>
+        </div>
+        <p class="choose" style="font-family:Montserrat,sans-serif;font-size:20px;font-weight:500;">What our students say about this</p>
+        <div class="container slider_container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="{% static 'image/feedback/as1.png' %}"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/feedback/as2.png' %}"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/feedback/as3.png' %}"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/feedback/as4.png' %}"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="{% static 'image/feedback/as5.png' %}"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/feedback/as6.png' %}"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/feedback/as7.png' %}"></div>
+                            <div class="swiper-slide"><img src="{% static 'image/feedback/as8.png' %}"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fluid-container" style="margin-bottom:20px;">
+    <div class="row" style="text-align:center;">
+        <div style="position:relative;">
+            <div style="position:absolute; top:25%; left:0; right:0;bottom:auto; height:250px; background-color:grey;"></div>
+            <div style="position:relative; z-index:1; display:flex; flex-direction: column; align-items: center;">
+                <a href="https://youtu.be/399CdeCOLtg"><img src="{% static 'image/icons/btn-play.png' %}" style="position:absolute;right:45%;top:25%;width:100px;height:100px;border-radius:100px;border-color:white;"> </img></a>
+                <p style="position:absolute;right:auto;top:75%; margin: 0; text-align: center;font-size:25px;color:white;"><b>Kick Start Your Career today with Inmakes! </b><br>Get standard industrial exposure without any limitations.</p>
+                <img src="{% static 'image/vids.png' %}">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Collaborations -->
+<div class="container" style="padding-bottom:50px;">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="choose" style="padding-top:60px;"><u style="text-decoration-color:green;">Collaborations</u></h3>
+        </div>
+        <p class="choose" style="font-family:Montserrat,sans-serif;font-size:20px;font-weight:500;padding-bottom:20px;">5000+ hiring partner companies</p>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <img src="{% static 'image/collaborations/1.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6" style="aspect-ratio:3/2;">
+            <img src="{% static 'image/collaborations/2.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6" style="aspect-ratio:3/2;">
+            <img src="{% static 'image/collaborations/3.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6" style="aspect-ratio:3/2;">
+            <img src="{% static 'image/collaborations/4.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6" style="aspect-ratio:3/2;">
+            <img src="{% static 'image/collaborations/5.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <img src="{% static 'image/collaborations/6.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <img src="{% static 'image/collaborations/7.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <img src="{% static 'image/collaborations/8.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <img src="{% static 'image/collaborations/10.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+           <img src="{% static 'image/collaborations/11.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+           <a href="{% static 'pdf/Tie up Companies 2022 HQ.pdf' %}"><img src="{% static 'image/collaborations/12.png' %}" width="100px;" height="100;" style="aspect-ratio:3/2;object-fit:contain"></a>
+        </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

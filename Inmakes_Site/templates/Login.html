@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container mb-3 mt-3">
+    <div class="card mb-3 mt-3" style="border-radius:10px;">
+    <div class="row" style="margin-top:50px;margin-bottom:50px;">
+            <div class="col-6">
+                <img src="{% static 'image/login/Asset202.png' %}" alt="" width="500px;">
+            </div>
+            <div class="col-6">
+                <form method="post">
+                    {% csrf_token %}
+                <h4 style="margin-bottom:20px;">Log in to your account</h4>
+                <label for="email" style="margin-bottom:5px;">Email or Phone:</label><br>
+                <input id="email" type="text" name="username" pattern="[^\s@]+@[^\s@]+\.[^\s@]+|\d+"  style="width:400px;margin-bottom:10px;height:40px;border-radius:10px;" ><br>
+                <label for="password" style="margin-bottom:5px;">Password:</label><br>
+                <input id="password" type="text" name="password" style="width:400px;margin-bottom:30px;height:40px;border-radius:10px;"><br>
+                <button class="btn btn-success" type="submit" style="width:400px;margin-bottom:20px;height:40px;border-radius:10px;">Login</button>
+                    <p>Forgot Password? <a href="{% url 'home:contact' %}" style="text-decoration:none;color:grey;"><b>Click here</b></a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="padding-top:50px;margin-bottom:50px;">
+    <div class="card" style="background-color:#43D477;height:150px;border-radius:15px;">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6"  style="padding-left:30px;padding-top:50px;">
+                        <p style="font-size:30px;color:white;"><b>Join with us now</b></p>
+                        <p>For Support - 04842998191</p>
+                    </div>
+                    <div class="col-6" style="text-align:right;padding-right:30px;padding-top:60px;">
+                        <form>
+                        <input style="width:80%;height:50px;border-radius:15px;position:relative;" type="email" name="email" placeholder="Enter your email here">
+                        <button style="text-align:center;margin-top:5px;border-radius:15px;background-color:#43D477;color:white;height:40px;width:80px;position:absolute;top:60px;right:25px;z-index:2;">Join</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+{% endblock %}

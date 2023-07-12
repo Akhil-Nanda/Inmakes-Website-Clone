@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="banner" style="background-image:url('/static/image/pdetails/bg.jpeg');min-height:200px;" >
+    {% if program %}
+    <h4 style="color:white;text-align:center;padding-top:30px;">{{program.name}}</h4>
+    {% endif %}
+    {% for i in level %}
+    <h6 style="color:white;text-align:center;padding-top:30px;font-size:20px;">{{i.level}}</h6><br>
+    {% endfor %}
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <div class="w3-bar w3-black mb-3 mt-3" style="background-color:#43D477;height:50px;border-radius:10px;text-align:center;">
+                <p  class="w3-bar-item btn btn-transparent mt-2" onclick="detail('Information')" style="color:white;"><b>Information</b></p>
+                <p  class="w3-bar-item btn btn-transparent mt-2" style="padding-left:200px;padding-right:200px;color:white;" onclick="detail('Module')"><b>Module</b></p>
+                <p class="w3-bar-item btn btn-transparent mt-2" onclick="detail('Review')" style="color:white;"><b>Review</b></p>
+            </div>
+            <h4 class="mb-3 mt-3" style="font-size:20px;">About this section</h4>
+            <div id="Information" class="nav_content mt-3 mb-3">
+                <p>
+                   {% for i in level %}
+                    {{i.desc|linebreaksbr}}
+                    {% endfor %}
+                </p>
+            </div>
+            <div id="Module" class="nav_content" style="display:none">
+                <div class="shadow card" style="height:150px;display:flex;justify-content:center;align-items:center;">
+                    <h6><span>&#9888;</span> Modules are not available at the moment. Please contact the team for more info.</h6>
+                </div>
+            </div>
+            <div id="Review" class="nav_content" style="display:none">
+                <div class="shadow card" style="height:150px;display:flex;justify-content:center;align-items:center;">
+                    <h6><span>&#9888;</span> Reviews are not available at the moment. Please contact the team for more info.</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card mt-3" style="border-radius:10px;">
+                <div class="card-body">
+                    <div class="card-title">
+                        <p style="color:grey;"><b><u style="text-decoration-color:#43D477;padding-bottom:20px;text-decoration-thickness:3px;">Get Free Guidance</u> {% if program %}{{program.name}}{% endif %}</b></p>
+                    </div>
+                    <div class="card-body">
+                        <input type="checkbox" checked style="width:20px;">
+                        {% for i in level %}{{i.level}}{% endfor %}<br>
+                        <a href="{% url 'home:contact' %}"><button style="width:100%;" class="btn btn-secondary mt-3 mb-3">Get Free Guidance</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3 mb-3" style="border-radius:10px;">
+                <img src="{% static 'image/icons/3.png' %}" class="card-img-top" style="width:200px;margin-right:auto;margin-left:auto;">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <p style="font-size:20px;text-align:center;">Unique Learning Platform</p>
+                        </div>
+                        <div class="card-text">
+                            <p style="font-size:15px;text-align:center;">One to One training</p>
+                        </div>
+                        <a href="{% url 'home:contact' %}"><button style="width:100%;" class="btn btn-success mt-3 mb-3">View our USP</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  function detail(nav_name) {
+    var i;
+    var x = document.getElementsByClassName("nav_content");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(nav_name).style.display = "block";
+  }
+</script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

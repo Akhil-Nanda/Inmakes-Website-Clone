@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="banner" style="background-image:url('/static/image/pdetails/category_cover1.jpg');min-height:190px;" >
+    {% if program %}
+    <h4 style="color:white;text-align:center;padding-top:30px;">{{program.name}}</h4>
+    {% endif %}
+</div>
+<div class="container">
+    <div class="row" style="display:flex;justify-content:left;">
+        {% for i in level %}
+        <div class="col-4">
+            <div class="shadow card mb-3 mt-3" style="width: 18rem;border-radius:10px;">
+            {% if program %}
+                {% if 'level_sub' in request.path %}
+                <a href="{% url 'pdetails:sub_details' i.id %}"><img class="card-img-top" src="{{ program.image.url }}" alt="Card image cap"></a>
+                {% else %}
+                <a href="{% url 'pdetails:details' program.id i.id %}"><img class="card-img-top" src="{{ program.image.url }}" alt="Card image cap"></a>
+                {% endif %}
+            {% endif %}
+                <div class="card-body" style="background-color:#43D477;">
+                    <h5 class="card-title" style="text-align:center;">{{i.level}}</h5>
+                    <p class="card-text" style="text-align:center;"><b>{{i.c_name.name}}</b></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

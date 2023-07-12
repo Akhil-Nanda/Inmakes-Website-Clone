@@ -1,0 +1,45 @@
+{% load static %}
+<footer>
+   <div class="fluid-container footer-container">
+       <div class="container">
+           <div class="row">
+              <div class="col-3">
+                <img src="{% static 'image/logo1.png' %}" width="250px;">
+                  <p class="footer_text">Learn new skills with top educators. Inmakes Learning hub is the right place for you to learn new skills that will fetch you better opportunities in your career.</p>
+              </div>
+               <div class="col-2">
+                    <p class="footer_text">Additional Links</p>
+                   <ul class="footer_text">
+                       {% if user.is_authenticated %}
+                       <li><a href="{% url 'registration:logout' %}" style="text-decoration:none;color:white;" class="footer_links">Logout</a></li>
+                       {% else %}
+                        <li><a href="{% url 'registration:login' %}" style="text-decoration:none;color:white;" class="footer_links">Login</a></li>
+                       <li><a href="{% url 'registration:register' %}" style="text-decoration:none;color:white;" class="footer_links">Register</a></li>
+                       {% endif %}
+
+                       <li><a href="{% url 'home:about' %}" style="text-decoration:none;color:white;" class="footer_links">About</a></li>
+                       <li><a href="{% url 'home:contact' %}" style="text-decoration:none;color:white;" class="footer_links">Contact Us</a></li>
+                   </ul>
+               </div>
+               <div class="col-3">
+                    <p class="footer_text">Support</p>
+                   <a href="tel: +91 4842998191" style="text-decoration:none"><p style="color:white;"><span>&#9743;</span> +91 4842998191</p></a>
+                   <a href="mailto:mail@inmakeslh.com" style="text-decoration:none"><p style="color:white;"><span>&#128231;</span> mail@inmakeslh.com</p></a>
+               </div>
+               <div class="col-4">
+                    <p class="footer_text">Recognized/Certified by</p>
+                   <img src="{% static 'image/Group201353.png' %}" width="75px;">
+                   <img src="{% static 'image/Group201354.png' %}" width="75px;">
+                   <img src="{% static 'image/Group 1355.png' %}" width="150px;">
+                        <a href=""><i class="fa-solid fa-instagram"></i></a>
+                        <a href=""><i class="fa-solid fa-whatsapp"></i></a>
+                       <a href=""><i class="fa-solid fa-youtube"></i></a>
+                       <a href=""><i class="fa-solid fa-linkedin"></i></a>
+                       <a href=""><i class="fa-solid fa-facebook"></i></a>
+               </div>
+           </div>
+           <hr style="color:green;height:3px;">
+       <P style="text-align:center;color:white;">&copy; Inmakes Learning Hub ; This is a dummy site made for practice.</P>
+       </div>
+    </div>
+</footer>
